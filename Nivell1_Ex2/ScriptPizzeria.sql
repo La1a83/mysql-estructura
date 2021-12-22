@@ -174,3 +174,18 @@ insert into comandes values(2,1,2,2,'2021-12-08 22:00:00',true,2,0,0,1,1,0,2,0,2
 insert into comandes values(3,2,3,3,'2021-12-08 22:00:00',false,2,0,0,1,1,0,2,0,2,74.17);
 insert into comandes values(4,3,6,1,'2021-12-15 15:00:00',false,1,0,0,0,0,0,0,1,0,15.60);
 insert into comandes values(5,4,9,4,'2021-12-08 22:00:00',true,2,0,0,0,0,0,0,0,2,31.21);
+
+/*consulta begudes venudes en la localitat 3 */
+SELECT  beguda1,beguda2,beguda3 FROM comandes
+INNER JOIN botiga
+on botiga.id = comandes.id_botiga
+inner join localitat
+on botiga.id_localitat = localitat.id
+where localitat.id = 3;
+
+/*consulta de les comandes fetes per l'empleat Maria */
+SELECT * FROM comandes
+inner join empleat
+on empleat.id = comandes.id_empleat
+where empleat.nom LIKE 'Maria';
+
