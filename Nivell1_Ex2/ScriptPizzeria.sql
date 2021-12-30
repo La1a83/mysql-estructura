@@ -102,10 +102,13 @@ beguda1 int,
 beguda2 int,
 beguda3 int,
 preu_total decimal,
+id_repartidor int,
+entrega timestamp null,
 primary key (id),
 foreign key (id_botiga) references botiga(id),
 foreign key (id_empleat) references empleat (id),
-foreign key (id_client) references client(id));
+foreign key (id_client) references client(id),
+foreign key (id_repartidor) references empleat(id));
 
 /*emplena taula provincies*/
 insert into provincies values (1,'Barcelona');
@@ -169,11 +172,11 @@ insert into begudes values (2,'refresc','cola',null,3.0);
 insert into begudes values (3,'cervesa','estrella damm',null,4.50);
 
 /*emplenar taula comandes*/
-insert into comandes values(1,1,1,1,'2021-12-01 22:10:15',true,1,0,0,1,0,0,2,0,0,33.15);
-insert into comandes values(2,1,2,2,'2021-12-08 22:00:00',true,2,0,0,1,1,0,2,0,2,74.17);
-insert into comandes values(3,2,3,3,'2021-12-08 22:00:00',false,2,0,0,1,1,0,2,0,2,74.17);
-insert into comandes values(4,3,6,1,'2021-12-15 15:00:00',false,1,0,0,0,0,0,0,1,0,15.60);
-insert into comandes values(5,4,9,4,'2021-12-08 22:00:00',true,2,0,0,0,0,0,0,0,2,31.21);
+insert into comandes values(1,1,1,1,'2021-12-01 22:10:15',true,1,0,0,1,0,0,2,0,0,33.15,1,'2021-12-01 22:30:00');
+insert into comandes values(2,1,2,2,'2021-12-08 22:00:00',true,2,0,0,1,1,0,2,0,2,74.17,3,'2021-12-08 22:25:00');
+insert into comandes values(3,2,3,3,'2021-12-08 22:00:00',false,2,0,0,1,1,0,2,0,2,74.17,null,null);
+insert into comandes values(4,3,6,1,'2021-12-15 15:00:00',false,1,0,0,0,0,0,0,1,0,15.60,null,null);
+insert into comandes values(5,4,9,4,'2021-12-08 22:00:00',true,2,0,0,0,0,0,0,0,2,31.21,9,'2021-12-08 22:15:00');
 
 /*consulta begudes venudes en la localitat 3 */
 SELECT  beguda1,beguda2,beguda3 FROM comandes
